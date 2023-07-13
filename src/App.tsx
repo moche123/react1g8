@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import Present, { ITheme } from './Present'
 import SuperComponent from './SuperComponent';
+import useFetch from './custom-hooks/useFetch';
 
 function App() {
+
+  const [count, setCount] = useState(1);
+  const [themeColor, setTheme] = useState<ITheme>("light");
+
+  const [dataFetch] = useFetch(`https://jsonplaceholder.typicode.com/todos/${count}`);
 
   const size = "big";
   // const theme = "light";
 
-  const [count, setCount] = useState(11);
-  const [themeColor, setTheme] = useState<ITheme>("light");
 
 
   useEffect(() => {
@@ -87,6 +91,15 @@ function App() {
              iste odit?</p>
 
       </SuperComponent>
+
+
+      <br />
+      <hr />
+      <h2 className="text-dark">
+        {dataFetch && <p key={dataFetch.id}>{dataFetch.title}</p>}
+
+      </h2>
+
 
       
     </React.Fragment>

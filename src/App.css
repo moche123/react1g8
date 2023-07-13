@@ -47,3 +47,7 @@
   display: block;
   margin-right: 10px;
 }
+
+.text-dark{
+  color: red;
+}
